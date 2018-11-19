@@ -29,6 +29,12 @@ async function createContract(privateKey) {
     return contract;
 }
 
+//SIgn up
+async function createKeyPair() {
+    const privateKey = CryptoUtils.generatePrivateKey()
+    return Uint8ArrayToB64(privateKey);
+}
+
 async function initContract(pKey) {
     const privateKey = Buffer.from(pKey, 'base64');
     contract = await createContract(privateKey);
@@ -40,10 +46,10 @@ function Uint8ArrayToB64(bytes) {
   return Buffer.from(bytes.buffer, bytes.byteOffset, bytes.byteLength).toString('base64')
 }
 
-function addProduct(id, name, category, quantity, ipfsHash, desc, _features) {
+function addProduct(id, name, category, quantity, desc, _features) {
     contract.methods.addProduct(id, name, category, quantity).send().then((tx) => {
         // console.log(tx);
-        contract.methods.setImage(id, ipfsHash).send();
+        // contract.methods.setImage(id, ipfsHash).send();
         contract.methods.setDesc(id, desc);
         contract.methods.setFeatures(id, _features);
     })
@@ -65,7 +71,7 @@ async function transferProduct(to, id, quantity) {
 // initContract('IeQo3jEz6R5mjO+cZGWHUTbQbtYbftldNmE7T+HNJYabCInIY+7YT752dPKIoBSckvazZRlzgrgJDk5x7tylEg==')
 // var id = "1";
 
-// addProduct("1", "Laptop", "Electronics", 100, "1r9ujqowr12", "A laptop", "really cool laptop");
+// addProduct("1", "Laptop", "Electronics", 100, "A laptop", "really cool laptop");
 
 // getProduct(id, (res) => {
 //     console.log(res);
