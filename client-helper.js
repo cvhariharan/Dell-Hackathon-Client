@@ -29,12 +29,17 @@ async function createContract(privateKey) {
     contract = new web3.eth.Contract(ABI, contractAddress, {from})
     return contract;
 }
-
+//SIgn up
 async function createKeyPair() {
     const privateKey = CryptoUtils.generatePrivateKey()
     contract = await createContract(privateKey);
     console.log(contract.options);
     return Uint8ArrayToB64(privateKey);
+}
+
+async function login(pKey) {
+    const privateKey = Buffer.from(pKey, 'base64');
+    contract = await createContract(privateKey);
 }
 
 function Uint8ArrayToB64(bytes) {
@@ -52,6 +57,9 @@ async function addToCart(orderId, pid, quantity) {
     // console.log(Asset.getOrderId(contract))
 }
 
+async function placeOrder() {
+    
+}
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -63,11 +71,12 @@ async function getOrderId() {
 }
 
 // console.log(createKeyPair());
-createKeyPair()
+// createKeyPair()
 
+// login('IeQo3jEz6R5mjO+cZGWHUTbQbtYbftldNmE7T+HNJYabCInIY+7YT752dPKIoBSckvazZRlzgrgJDk5x7tylEg==');
 
 getOrderId().then((res) => {
     //Should throw an error
     console.log(res);
-    addToCart(res, "3", 3);
+    // addToCart(res, "3", 3);
 })

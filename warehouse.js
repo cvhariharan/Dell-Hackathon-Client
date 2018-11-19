@@ -62,18 +62,18 @@ async function transferProduct(to, id, quantity) {
 }
 
 //TEST IMPLEMENTATIONS
-initContract('IeQo3jEz6R5mjO+cZGWHUTbQbtYbftldNmE7T+HNJYabCInIY+7YT752dPKIoBSckvazZRlzgrgJDk5x7tylEg==')
-var id = "1";
+// initContract('IeQo3jEz6R5mjO+cZGWHUTbQbtYbftldNmE7T+HNJYabCInIY+7YT752dPKIoBSckvazZRlzgrgJDk5x7tylEg==')
+// var id = "1";
 
-addProduct("1", "Laptop", "Electronics", 100, "1r9ujqowr12", "A laptop", "really cool laptop");
+// addProduct("1", "Laptop", "Electronics", 100, "1r9ujqowr12", "A laptop", "really cool laptop");
 
-getProduct(id, (res) => {
-    console.log(res);
-})
+// getProduct(id, (res) => {
+//     console.log(res);
+// })
 
-getImage(id, (res) => {
-    console.log(res);
-})
+// getImage(id, (res) => {
+//     console.log(res);
+// })
 
 
 //Order Listener and transfer
